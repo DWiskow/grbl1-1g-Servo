@@ -165,6 +165,8 @@ void spindle_stop()
         if (!(settings.flags & BITFLAG_LASER_MODE)) {                                                   // RC Servo
           #ifndef RC_SERVO_SHORT                                                                        // RC Servo
             SPINDLE_TCCRA_REGISTER &= ~(1<<SPINDLE_COMB_BIT); // Disable PWM. Output voltage is zero.   // RC Servo
+          #else                                                                                         // RC Servo
+            spindle_stop();                                                                             // RC Servo
           #endif                                                                                        // RC Servo
         } else {                                                                                        // RC Servo
           SPINDLE_TCCRA_REGISTER &= ~(1<<SPINDLE_COMB_BIT); // Disable PWM. Output voltage is zero.     // RC Servo
